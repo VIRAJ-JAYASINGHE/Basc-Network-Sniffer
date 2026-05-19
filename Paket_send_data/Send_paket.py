@@ -31,7 +31,7 @@ def send_test_pakect():
 
 if __name__ == "__main__":
 
-    for i in range(2):
+    for i in range(3):
         send_test_pakect()
         time.sleep(2)
 
