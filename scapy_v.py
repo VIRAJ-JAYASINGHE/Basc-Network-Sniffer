@@ -9,7 +9,7 @@ def analyze_packet(X):
         
 
 
-        print("Source_ip:" + S_ip +" -> "+ "Destination_ip:" + D_ip + " -> " + bytes(X[W].payload[:20])+ " -> " + paket_name(X))
+        print(f"Source_ip: {S_ip} ->  Destination_ip: {D_ip}  ->   {paket_name(X)}  -> bytes: {Length_paket(X)}")
         
        
 def paket_name(Y):
@@ -25,6 +25,24 @@ def paket_name(Y):
 
     return W
 
-    
+def Length_paket(Z):
 
-sniff(prn = analyze_packet,count = 5)
+    if Z.haslayer(TCP):
+
+        payload = bytes(Z[TCP].payload)[:20]
+
+    elif Z.haslayer(UDP):
+
+        payload = bytes(Z[UDP].payload)[:20]
+
+    elif Z.haslayer(ICMP):
+
+        payload = bytes(Z[ICMP].payload)[:20]
+
+    else:
+            payload = b""
+    
+    return str(len(payload))
+print("stop paket capturling with Ctrl + C")
+
+sniff(prn=analyze_packet)
