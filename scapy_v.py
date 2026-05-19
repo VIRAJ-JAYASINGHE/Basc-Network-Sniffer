@@ -4,9 +4,10 @@ def analyze_packet(X):
 
     if X.haslayer(IP):
 
+        text = ""
         S_ip = X[IP].src
         D_ip = X[IP].dst
-        text = ""
+        
         
         if X.haslayer(Raw):
 
