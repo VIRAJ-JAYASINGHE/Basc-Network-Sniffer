@@ -6,10 +6,15 @@ def analyze_packet(X):
 
         S_ip = X[IP].src
         D_ip = X[IP].dst
+        text = ""
         
+        if X.haslayer(Raw):
+
+            payload_hex = X[Raw].load
+            text = payload_hex.decode('utf-8',errors='ignore')
 
 
-        print(f"Source_ip: {S_ip} ->  Destination_ip: {D_ip}  ->   {paket_name(X)}  -> bytes: {Length_paket(X)}")
+        print(f"Source_ip: {S_ip} ->  Destination_ip: {D_ip}  ->   {paket_name(X)}  -> bytes: {Length_paket(X)} -> \n data: {text}")
         
        
 def paket_name(Y):
