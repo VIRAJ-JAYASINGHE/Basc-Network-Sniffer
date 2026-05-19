@@ -4,16 +4,18 @@ def analyze_packet(X):
 
     if X.haslayer(IP):
 
-        text = ""
+        
         S_ip = X[IP].src
         D_ip = X[IP].dst
+        text = ""
         
         
         if X.haslayer(Raw):
-
-            payload_hex = X[Raw].load
-            text = payload_hex.decode('utf-8',errors='ignore')
-
+            try:
+                payload_hex = X[Raw].load
+                text = payload_hex.decode('utf-8', errors='ignore')
+            except:
+                text = "Could not decode payload"
 
         print(f"Source_ip: {S_ip} ->  Destination_ip: {D_ip}  ->   {paket_name(X)}  -> bytes: {Length_paket(X)} -> \n data: {text}")
         
