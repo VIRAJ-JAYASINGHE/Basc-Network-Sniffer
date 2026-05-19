@@ -2,14 +2,16 @@ from scapy.all import IP,TCP,ICMP, send
 import time
 
 Target_ip = "10.54.22.117"
+Target_maching_send_massage1 = "Viraj jayasinghe"
+Target_maching_send_massage2 = "Password_1234"
 
 def send_test_pakect():
 
-    print(f"sen paket to {10.54.22.117}")
+    print(f"sen paket to {Target_ip}")
 
     try:
         #icmp paket box
-        icmp_paket = IP(dst=Target_ip) / ICMP() / "Viraj jayasinghe"
+        icmp_paket = IP(dst=Target_ip) / ICMP() / Target_maching_send_massage1 
         send(icmp_paket, verbose=False)
 
         print(f"send_data: viraj jayasinghe")
@@ -17,8 +19,8 @@ def send_test_pakect():
 
         #tcp paket box
 
-        tcp_paket = IP(dst=Target_ip) / TCP(dport = 80) / "Password_1234"
-        send(Target_ip,verbose = False)
+        tcp_paket = IP(dst=Target_ip) / TCP(dport = 80) / Target_maching_send_massage2
+        send(tcp_paket, verbose = False)
 
         print(f"send_data: Password_1234")
 
