@@ -6,10 +6,10 @@ def analyze_packet(X):
 
         S_ip = X[IP].src
         D_ip = X[IP].dst
-        protocol = X[IP].proto
+        
 
 
-        print("Source_ip:" + S_ip +" -> "+ "Destination_ip:" + D_ip + " -> " + " -> " + protocol + paket_name(X))
+        print("Source_ip:" + S_ip +" -> "+ "Destination_ip:" + D_ip + " -> " + bytes(X[W].payload[:20])+ " -> " + paket_name(X))
         
        
 def paket_name(Y):
@@ -25,6 +25,6 @@ def paket_name(Y):
 
     return W
 
-    print(bytes(X[W].payload))
+    
 
 sniff(prn = analyze_packet,count = 5)
