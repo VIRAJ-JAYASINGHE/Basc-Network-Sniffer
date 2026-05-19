@@ -1,7 +1,7 @@
 from scapy.all import IP,TCP,ICMP, send  
 import time
 
-Target_ip = "10.54.22.117"
+Target_ip = "______"
 Target_maching_send_massage1 = "Viraj jayasinghe"
 Target_maching_send_massage2 = "Password_1234"
 
